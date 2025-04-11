@@ -8,22 +8,26 @@ interface TestingAppProps {
 
 export default function TestingApp({ id }: TestingAppProps) {
   const [count, setCount] = useState<number>(0);
+  
   const increment = () => {
     setCount(count + 1);
   };
+  
   const decrement = () => {
     setCount(count - 1);
   };
+  
   const reset = () => {
     setCount(0);
   };
+  
   const styles = {
     container: {
       display: 'flex',
       flexDirection: 'column' as const,
       alignItems: 'center',
       justifyContent: 'center',
-      height: '100vh',
+      height: '100%',
     },
     counterValue: {
       fontSize: '3rem',
@@ -35,18 +39,29 @@ export default function TestingApp({ id }: TestingAppProps) {
       fontSize: '1.2rem',
       cursor: 'pointer',
     },
+    iframeContainer: {
+      width: '100%',
+      height: '500px',
+      border: 'none',
+      marginTop: '1rem',
+    }
   };
-  return <>
-    {/* <Image src="/report.png" alt="Logo" width={800} height={500} style={{marginLeft:"200px",marginTop:"100px"}} /> */}
-    <WindowStructure windowId={id}>
-    <div style={styles.container}>
-      <h1 style={styles.counterValue}>{count}</h1>
-      <div>
-        <button style={styles.button} onClick={increment}>Increment</button>
-        <button style={styles.button} onClick={decrement}>Decrement</button>
-        <button style={styles.button} onClick={reset}>Reset</button>
-      </div>
-    </div>
-    </WindowStructure>
-</>
+  
+  return (
+    <>
+      <WindowStructure windowId={id}>
+        
+          <div className="web3">
+
+          <iframe 
+            src="https://excalidraw.com/" 
+            title="Excalidraw" 
+            style={styles.iframeContainer}
+            allow="clipboard-read; clipboard-write"
+            />
+            </ div>
+        {/* </div> */}
+      </WindowStructure>
+    </>
+  );
 }

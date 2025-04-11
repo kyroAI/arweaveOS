@@ -1,7 +1,10 @@
 import MedicalRecordsApp from "@/apps/medical_records/medical_records_app";
 import React from "react";
 import TestingApp from "@/apps/testingapp/testingapp";
-
+// import TestingApp1 from "@/apps/temp/temp";
+// import AOMessenger from "@/apps/temp/temp";
+import AOVoiceRecorder from "@/apps/temp/temp";
+import NotesApp from "@/apps/temp/temp2";
 export interface AppDetails {
     id: number;
   tempId: number;
@@ -19,22 +22,31 @@ export interface AppCollection {
 
 // Registry without `id` - it will be added dynamically
 export const apps: AppCollection = {
-  1: {
-    tempId:1,
-    name: "test_app",
-    icon: "/report_upload.svg",
-    multipleWindowsAllowed: true,
-    shortWindow: false,
-    isHidden: false,
-    appCode: TestingApp
-  },
+  // 1: {
+  //   tempId:1,
+  //   name: "Annon Voices",
+  //   icon: "/report_upload.svg",
+  //   multipleWindowsAllowed: true,
+  //   shortWindow: false,
+  //   isHidden: false,
+  //   appCode: TestingApp
+  // },
   2: {
     tempId:2,
-    name: "test_app2",
-    icon: "/medical_record.svg",
+    name: "Annon Voices",
+    icon: "/eye.svg",
     multipleWindowsAllowed: true,
     shortWindow: false,
     isHidden: false,
-    appCode: MedicalRecordsApp
+    appCode: AOVoiceRecorder
+  },
+  3: {
+    tempId:3,
+    name: "AO Notes",
+    icon: "/notes.svg",
+    multipleWindowsAllowed: true,
+    shortWindow: false,
+    isHidden: false,
+    appCode: NotesApp
   }
 };

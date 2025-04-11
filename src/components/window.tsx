@@ -7,13 +7,18 @@ import type { RootState } from "@/redux/store";
 import { useSelector, useDispatch } from 'react-redux'
 import { increment } from "@/redux/z_index/zindex";
 import { addProcess, removeProcess } from "@/redux/kernel/kernel";
+import { AppDetails } from "@/kernel/kernelregistery";
 
 interface WindowStructureProps {
     playgroundHeight: number;
-  }
+}
 
 export default function WindowStructure({children, windowId}: {children: ReactNode, windowId: number}) {
     const zIndex = useSelector((state: RootState) => state.zIndex.windows[windowId] || 0)
+    const processes = useSelector((state: RootState) => state.process.process);
+    const currentApp = processes.find((app: AppDetails) => app.id === windowId);
+    const windowTitle = currentApp ? currentApp.name : "Window";
+    
     const dispatch = useDispatch()
     
     const ref = useRef<HTMLElement | null>(null);
@@ -189,7 +194,7 @@ export default function WindowStructure({children, windowId}: {children: ReactNo
             <div className="wb-drag" onDoubleClick={maximizeControl}>
                 {/* <div className="wb-ic9on"></div> */}
                 <div className="wb-title">
-                    <h2>Patient Report</h2>
+                    <h2>{windowTitle}</h2>
                 </div>
             </div>
             <div className="wb-control">

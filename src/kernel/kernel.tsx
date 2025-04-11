@@ -52,17 +52,27 @@ export function TestingMenu() {
     
     return (
         <>
-            {Object.values(apps).map((item: AppDetails) => (
-                <React.Fragment key={item.tempId}>
-                    <div style={{ display: "flex", marginBottom: "10px" }} className="menu" onClick={() => handelClick(item)}>
-                        <div>
-                            <Image src={item.icon} alt="Logo" width={40} height={40} style={{ marginLeft: "10px" }} className="menu-svg" />
-                        </div>
-                        <div style={{ marginLeft: "10px", marginTop: "5px", marginRight: "10px" }} className="menu">{item.name}</div>
-                    </div>
-                    <hr />
-                </React.Fragment>
-            ))}
-        </>
+        {Object.values(apps).map((item: AppDetails) => (
+          <React.Fragment key={item.tempId}>
+            <div
+              className="flex items-center mb-3 px-3 py-2  cursor-pointer menu"
+              onClick={() => handelClick(item)}
+            >
+              <div className="flex-shrink-0">
+                <Image
+                  src={item.icon}
+                  alt="Logo"
+                  width={50}
+                  height={50}
+                  className="menu-svg w-9 h-9"
+                />
+              </div>
+              <div className="ml-3 text-base font-medium menu">{item.name}</div>
+            </div>
+            <hr className="w-72 mx-auto" />
+          </React.Fragment>
+        ))}
+      </>
+      
     );
 }
